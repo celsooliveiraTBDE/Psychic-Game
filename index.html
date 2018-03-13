@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Psychic Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/CSS/reset.css"/>
+<!-- <script src="main.js"></script> -->
+ </head>
+
+ <body>
+<!-- First Step: Create HTML here to render text according to the specs sent -->
+
+    <h1>Psychic Game</h1>
+    <div id="game">
+    <p>Guess what letter I'm thinking of</p>
+    </div>
+
+
+    <script type="text/javascript">
+    // Lists all possible values the CPU can choose from;
+
+        var lettersArray=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Z"]
+        var lettersChosen=["_","_","_","_","_","_","_","_","_","_",]; 
+        //  Choice vars and Counters for both player Wins and Losses   
+
+        var CPUChoice; 
+        var PlayerChoice; 
+        var WinCount = 0; 
+        var LossCount = 0; 
+        var GuessesMade = 0; 
+        
+            document.onkeyup = function(event) {
+                    GuessesMade++; {
+                        // if the value of the guess made is still within range which #tries)
+                    }
+                // for (i=0; i<lettersChosen.length; i++){
+                    PlayerChoice = event.key.toUpperCase();
+                // Determines which key was pressed and returns it capitalized.
+
+                CPUChoice = lettersArray[Math.floor(Math.random() * lettersArray.length)];
+                // Select a random index from an array and stored it in the CPU Choice
+
+                console.log(CPUChoice); 
+
+                // If the answer is correct, player gets a point. 
+                if (PlayerChoice === CPUChoice){
+                WinCount++
+                }
+                else{
+
+                LossCount++;
+                }
+                console.log(PlayerChoice);
+                // This adds the players choice to the letters chosen array before displaying it using the splice 
+
+
+                var html =
+                "<p>You chose: " + PlayerChoice + "</p>" +
+                "<p>The computer chose: " + CPUChoice + "</p>" +
+                "<p>wins: " + WinCount + "</p>" +
+                "<p>losses: " + LossCount + "</p>" +
+                "<p>ties: " + lettersChosen + "</p>";
+        // Set the inner HTML contents of the #game div to our html string
+                document.querySelector("#game").innerHTML = html;
+            }
+        
+    </script>
+</body>    
+</html>
